@@ -104,11 +104,11 @@ h2 em { color: #887c72; font-weight: 400; }
 .keepsakes__heading { display: flex; align-items: end; justify-content: space-between; gap: 50px; margin-bottom: 47px; }
 .keepsakes__heading h2 { font-size: clamp(46px, 6vw, 75px); }
 .keepsakes__heading > p { max-width: 290px; margin: 0 1px 8px 0; color: #747079; font-size: 11px; line-height: 1.85; }
-.memory-gallery { display: grid; grid-template-columns: 1.08fr .92fr 1fr; align-items: start; gap: clamp(19px, 3vw, 42px); }
+.memory-gallery { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; max-width: 920px; margin: 0 auto; }
 .memory { min-width: 0; margin: 0; }
-.memory--offset { margin-top: 68px; }
-.memory img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: #d5d0c7; filter: saturate(.83); transition: filter .5s ease, transform .5s cubic-bezier(.2,.7,.25,1); }
-.memory:hover img { filter: saturate(1); transform: translateY(-4px); }
+.memory--featured { width: 100%; }
+.memory img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: #d5d0c7; transition: transform .5s cubic-bezier(.2,.7,.25,1); }
+.memory:hover img { transform: translateY(-4px); }
 .memory figcaption { display: flex; flex-direction: column; gap: 4px; padding: 13px 3px 0; }
 .memory__number { color: #9c8668; font-size: 8px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
 .memory__caption { color: var(--night); font-family: var(--serif); font-size: clamp(18px, 2.2vw, 26px); line-height: 1.25; }
