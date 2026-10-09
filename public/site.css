@@ -104,7 +104,7 @@ h2 em { color: #887c72; font-weight: 400; }
 .keepsakes__heading { display: flex; align-items: end; justify-content: space-between; gap: 50px; margin-bottom: 47px; }
 .keepsakes__heading h2 { font-size: clamp(46px, 6vw, 75px); }
 .keepsakes__heading > p { max-width: 290px; margin: 0 1px 8px 0; color: #747079; font-size: 11px; line-height: 1.85; }
-.memory-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: clamp(20px, 4vw, 48px); max-width: 1040px; margin: 0 auto; }
+.memory-gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; gap: clamp(18px, 3vw, 36px); max-width: 1120px; margin: 0 auto; }
 .memory { min-width: 0; margin: 0; }
 .memory img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: #d5d0c7; transition: transform .5s cubic-bezier(.2,.7,.25,1); }
 .memory:hover img { transform: translateY(-4px); }
@@ -152,6 +152,7 @@ h2 em { color: #887c72; font-weight: 400; }
   .milestone { width: 84%; gap: 6vw; padding: 100px 0; }
   .story { gap: 7vw; padding-right: 8vw; padding-left: 8vw; }
   .keepsakes { padding-right: 8vw; padding-left: 8vw; }
+  .memory-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .site-footer { padding-right: 8vw; padding-left: 8vw; }
 }
 @media (max-width: 680px) {
