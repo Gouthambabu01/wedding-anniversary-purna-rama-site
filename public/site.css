@@ -41,8 +41,8 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outlin
 
 .hero { position: relative; display: flex; align-items: center; min-height: min(790px, 100svh); min-height: clamp(680px, 96svh, 880px); overflow: hidden; padding: 128px max(9vw, calc((100vw - 1240px) / 2)) 102px; color: var(--silver); background: var(--night-deep); isolation: isolate; }
 .hero__art, .hero__veil { position: absolute; z-index: -1; inset: 0; }
-.hero__art { inset: 4% 0 0 28%; background-image: url('/manus-storage/async-images/GZ8DHYxPbJpUMCCGmpFZPW/image-1.webp'); background-position: center right; background-repeat: no-repeat; background-size: cover; opacity: .86; animation: art-settle 1.6s ease-out both, gentle-drift 24s ease-in-out 1.6s infinite alternate; }
-.hero__veil { z-index: 0; background: linear-gradient(90deg, rgba(20,26,43,.98) 0%, rgba(20,26,43,.94) 32%, rgba(20,26,43,.69) 54%, rgba(20,26,43,.22) 100%), linear-gradient(0deg, rgba(20,26,43,.58), transparent 25%, transparent 76%, rgba(20,26,43,.18)); }
+.hero__art { inset: 0; background-image: url('/manus-storage/WhatsAppImage2026-10-10at11.57.51PM_6cdb3b08.jpeg'); background-position: center center; background-repeat: no-repeat; background-size: cover; opacity: .92; animation: art-settle 1.6s ease-out both, gentle-drift 24s ease-in-out 1.6s infinite alternate; }
+.hero__veil { z-index: 0; background: linear-gradient(90deg, rgba(20,26,43,.86) 0%, rgba(20,26,43,.75) 32%, rgba(20,26,43,.48) 54%, rgba(20,26,43,.12) 100%), linear-gradient(0deg, rgba(20,26,43,.48), transparent 25%, transparent 76%, rgba(20,26,43,.16)); }
 .hero__content { position: relative; z-index: 1; width: min(570px, 72%); padding-top: 8px; animation: rise-in .9s .1s both; }
 .eyebrow { margin: 0 0 17px; color: var(--accent); font-size: 10px; font-weight: 600; letter-spacing: .24em; line-height: 1.6; text-transform: uppercase; }
 .eyebrow__star { display: inline-block; margin-right: 8px; color: #e5d8c4; font-size: 13px; }
