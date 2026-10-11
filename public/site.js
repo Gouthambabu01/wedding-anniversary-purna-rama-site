@@ -4,7 +4,22 @@
   const countdownNode = document.getElementById('anniversary-countdown');
   const toast = document.getElementById('celebration-toast');
   const surpriseButton = document.getElementById('open-letter');
+  const welcomeScreen = document.getElementById('welcome-screen');
+  const welcomeButton = document.getElementById('welcome-open');
+  const welcomeBurst = document.getElementById('welcome-burst');
+  const welcomeStatus = document.getElementById('welcome-status');
+  const anniversarySite = document.getElementById('anniversary-site');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let toastTimer;
+  let welcomeTimer;
+  let opening = false;
+
+  if (welcomeScreen && welcomeButton && anniversarySite) {
+    anniversarySite.inert = true;
+    anniversarySite.setAttribute('aria-hidden', 'true');
+    document.body.classList.add('is-welcome-locked');
+    welcomeButton.focus({ preventScroll: true });
+  }
 
   function updateAnniversary() {
     const today = new Date();
@@ -34,7 +49,7 @@
   function showSurprise() {
     const letter = document.getElementById('letter');
     if (!letter) return;
-    letter.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    letter.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
     if (toast) {
       toast.textContent = 'A little love, saved just for you.';
       toast.classList.add('is-visible');
@@ -42,7 +57,7 @@
       toastTimer = window.setTimeout(() => toast.classList.remove('is-visible'), 2700);
     }
 
-    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (!reduceMotion) {
       for (let i = 0; i < 12; i += 1) {
         const sparkle = document.createElement('span');
         sparkle.className = 'sparkle';
@@ -56,6 +71,53 @@
     }
   }
 
+  function celebrate() {
+    if (!welcomeBurst || reduceMotion) return;
+    const colors = ['#e2c28e', '#f5eee2', '#d9947e', '#ffffff'];
+    const count = 34;
+    for (let index = 0; index < count; index += 1) {
+      const particle = document.createElement('span');
+      const angle = (Math.PI * 2 * index) / count + (Math.random() - .5) * .2;
+      const distance = 115 + Math.random() * Math.min(window.innerWidth, window.innerHeight) * .34;
+      particle.className = 'welcome-confetti';
+      particle.style.setProperty('--confetti-x', `${Math.cos(angle) * distance}px`);
+      particle.style.setProperty('--confetti-y', `${Math.sin(angle) * distance}px`);
+      particle.style.setProperty('--confetti-turn', `${Math.round(Math.random() * 720 - 360)}deg`);
+      particle.style.setProperty('--confetti-delay', `${Math.round(Math.random() * 170)}ms`);
+      particle.style.setProperty('--confetti-color', colors[index % colors.length]);
+      welcomeBurst.appendChild(particle);
+      particle.addEventListener('animationend', () => particle.remove(), { once: true });
+    }
+  }
+
+  function revealAnniversary() {
+    if (!welcomeScreen || !anniversarySite) return;
+    anniversarySite.inert = false;
+    anniversarySite.removeAttribute('aria-hidden');
+    anniversarySite.classList.add('is-revealed');
+    document.body.classList.remove('is-welcome-locked');
+
+    const heroTitle = document.getElementById('hero-title');
+    heroTitle?.setAttribute('tabindex', '-1');
+    heroTitle?.focus({ preventScroll: true });
+    welcomeScreen.setAttribute('aria-hidden', 'true');
+    welcomeScreen.classList.add('is-leaving');
+    welcomeTimer = window.setTimeout(() => {
+      welcomeScreen.hidden = true;
+    }, reduceMotion ? 30 : 700);
+  }
+
+  function openAnniversary() {
+    if (opening || !welcomeScreen || !anniversarySite) return;
+    opening = true;
+    if (welcomeButton) welcomeButton.disabled = true;
+    welcomeScreen.classList.add('is-celebrating');
+    if (welcomeStatus) welcomeStatus.textContent = 'Surprise! Here comes your anniversary celebration.';
+    celebrate();
+    welcomeTimer = window.setTimeout(revealAnniversary, reduceMotion ? 150 : 1500);
+  }
+
   updateAnniversary();
+  welcomeButton?.addEventListener('click', openAnniversary);
   surpriseButton?.addEventListener('click', showSurprise);
 })();

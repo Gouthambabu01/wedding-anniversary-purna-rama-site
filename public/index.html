@@ -14,8 +14,23 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Italiana&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/site.css" />
     <script src="/site.js" defer></script>
+    <noscript><style>#welcome-screen { display: none !important; }</style></noscript>
   </head>
   <body>
+    <div class="welcome-screen" id="welcome-screen" role="dialog" aria-modal="true" aria-labelledby="welcome-title" aria-describedby="welcome-copy">
+      <div class="welcome-card">
+        <div class="welcome-seal" aria-hidden="true"><span>P</span><i>&amp;</i><span>R</span></div>
+        <p class="eyebrow welcome-kicker">A keepsake for Purna &amp; Rama</p>
+        <h1 class="welcome-title" id="welcome-title">A little surprise<br /><em>just for you.</em></h1>
+        <p class="welcome-copy" id="welcome-copy">Made with all my love, for your special day.</p>
+        <button class="welcome-open" id="welcome-open" type="button">Open your surprise <span aria-hidden="true">✧</span></button>
+        <p class="welcome-note">12 October 1999 <span aria-hidden="true">✦</span> Still choosing each other</p>
+      </div>
+      <div class="welcome-burst" id="welcome-burst" aria-hidden="true"></div>
+      <p class="sr-only" id="welcome-status" role="status" aria-live="polite"></p>
+    </div>
+
+    <div class="anniversary-site" id="anniversary-site">
     <a class="skip-link" href="#main">Skip to the celebration</a>
 
     <header class="site-header">
@@ -133,5 +148,6 @@
       <a class="back-top" href="#home">Back to the beginning ↑</a>
     </footer>
     <div class="toast" id="celebration-toast" role="status" aria-live="polite"></div>
+    </div>
   </body>
 </html>
